@@ -1,0 +1,381 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow-y: auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.app-wrapper {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Fixed Top Navigation */
+.nav {
+  position: fixed;
+  left: 152px; 
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  font-size: 22px;
+  color: #585858;
+  background-color: #fff;
+  z-index: 1000;
+}
+
+.nav img {
+  width: 40px;
+  border-radius: 50%;
+}
+
+/* Main Layout */
+.Main {
+  flex: 1;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollable Content */
+.main-container {
+  max-width: 900px;
+  margin: auto;
+  padding-top: 80px;       
+  padding-bottom: 160px;  
+  height: auto;
+  overflow: visible;
+}
+
+.main-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Greeting */
+.greet {
+  margin: 40px 0px;
+  font-size: 36px;
+  color: #c4c7c5;
+  font-weight: 500;
+  padding: 20px;
+}
+
+.greet span {
+  background: -webkit-linear-gradient(16deg, #4b90ff, #ff5546);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Main Cards */
+
+.cards {
+  display: flex;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.card {
+  height: 185px;
+  width: 180px;
+  padding: 15px;
+  background-color: #f0f4f9;
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+}
+
+.card img {
+  width: 35px;
+  padding: 5px;
+  position: absolute;
+  background-color: white;
+  border-radius: 20px;
+  bottom: 10px;
+  right: 10px;
+}
+
+.card p {
+  color: #585858;
+  font-size: 15px;
+}
+
+.card:hover {
+  background-color: #dfe4ea;
+}
+
+/* Fixed Search Box */
+
+.search-box-fixed {
+  position: fixed;
+  bottom: 20px;
+  left: 152px; 
+  right: 0;
+  max-width: 900px;
+  margin: auto;
+  padding: 0px 20px;
+  background-color: #fff;
+  z-index: 999;
+}
+
+/* Search Box Styling */
+.search-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background-color: #f0f4f9;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0);
+  transition: all 0.3s ease;
+}
+
+.search-box img {
+  width: 24px;
+  cursor: pointer;
+}
+
+.search-box input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.search-box div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Bottom Info Text */
+.bottom-info {
+  font-size: 13px;
+  margin: 8px auto;
+  text-align: center;
+  font-weight: 300;
+}
+
+/* Result Section */
+.result-container {
+  position: relative;
+  height: 100vh;  
+  overflow: hidden;
+  height: 70vh;
+  padding: 0 1rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  max-width: 800px;
+}
+
+
+.result-header {
+  display: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background-color: white;
+  z-index:100%;
+  width:100%;
+  border-bottom: 1px solid #ccc;
+}
+
+.result-body {
+  margin-top: 0px;
+  overflow-y: auto;
+  padding: 20px 0;
+  height:calc(100vh - 70px);
+  scrollbar-width: none;
+}
+.result-body::-webkit-scrollbar{
+    display: none;
+
+}
+
+.result-header img {
+  width: 40px;
+  border-radius: 50%;
+}
+
+/* Loader Animation */
+
+.loader {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.loader hr {
+  border-radius: 4px;
+  border: none;
+  background-color: #f6f7f8;
+  background: linear-gradient(to right, #9ed7ff, #ffffff, #9ed7ff);
+  background-size: 800px 50px;
+  height: 20px;
+  animation: loader 3s infinite linear;
+}
+
+@keyframes loader {
+  0% {
+    background-position: -800px 0px;
+  }
+  100% {
+    background-position: 800px 0px;
+  }
+}
+.result-data p {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+
+/* Responsive Fixes */
+
+@media (max-width: 600px) {
+  .search-box input {
+    flex: 1;
+    display: flex;
+    min-width: 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 5px;
+  }
+  .greet{
+    margin: 30px 0px;
+   font-size: 32px;
+  }
+  .cards{
+    gap: 15px;
+    padding: 15px;
+    bottom: 20px;
+  }
+
+  .search-box img {
+    width: 20px;
+  }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 5px 10px;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .search-box div {
+    gap: 5px;
+  }
+
+  .search-box-fixed {
+    left: 0;
+    right: 0;
+    max-width: 100%
+  }
+}
+/*Attach and mic icon */
+
+.search-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-label, .icon-button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 5px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+  color: #585858;;
+}
+.icon-label svg, .icon-button svg {
+  width: 18px;
+  height:18px
+}
+
+.icon-label:hover, .icon-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.icon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+
+@media (max-width: 600px) {
+  .search-box input {
+    flex: 10;
+    min-width: 100px;
+    width: auto; 
+    max-width: none;
+    overflow-x: auto;
+    white-space: nowrap ;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+
+  .search-box img {
+    width: 20px;
+    flex: 0;
+  }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 5px 10px;
+    min-width: 0;
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    overflow: visible;
+  }
+
+  .search-box div {
+    gap: 5px;
+    flex: 0;
+  }
+
+  .search-box-fixed {
+    left: 0;
+    right: 0;
+    max-width: none;
+  }
+
+  .search-icons {
+    gap: 5px;
+  }
+
+  .icon-label svg, .icon-button svg, .search-box img {
+    width: 16px;
+    height: 16px ;
+  }
+}
