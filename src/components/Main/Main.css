@@ -10,21 +10,22 @@ body {
   height: 100vh;
   overflow-y: auto;
   font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 body::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .app-wrapper {
   display: flex;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
 }
 
-/* Fixed Top Navigation */
 .nav {
   position: fixed;
-  left: 152px; 
+  left: 152px;
   right: 0;
   height: 60px;
   display: flex;
@@ -42,7 +43,6 @@ body::-webkit-scrollbar {
   border-radius: 50%;
 }
 
-/* Main Layout */
 .Main {
   flex: 1;
   min-height: 100vh;
@@ -51,21 +51,21 @@ body::-webkit-scrollbar {
   flex-direction: column;
 }
 
-/* Scrollable Content */
 .main-container {
   max-width: 900px;
   margin: auto;
-  padding-top: 80px;       
-  padding-bottom: 160px;  
+  padding-top: 80px;
+  padding-bottom: 160px;
   height: auto;
-  overflow: visible;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(100vh - 80px);
 }
-
 .main-container::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
-/* Greeting */
 .greet {
   margin: 40px 0px;
   font-size: 36px;
@@ -80,13 +80,14 @@ body::-webkit-scrollbar {
   -webkit-text-fill-color: transparent;
 }
 
-/* Main Cards */
-
 .cards {
   display: flex;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 15px;
   padding: 20px;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 .card {
@@ -97,6 +98,7 @@ body::-webkit-scrollbar {
   border-radius: 15px;
   position: relative;
   cursor: pointer;
+  will-change: transform;
 }
 
 .card img {
@@ -118,12 +120,10 @@ body::-webkit-scrollbar {
   background-color: #dfe4ea;
 }
 
-/* Fixed Search Box */
-
 .search-box-fixed {
   position: fixed;
   bottom: 20px;
-  left: 152px; 
+  left: 152px;
   right: 0;
   max-width: 900px;
   margin: auto;
@@ -132,7 +132,6 @@ body::-webkit-scrollbar {
   z-index: 999;
 }
 
-/* Search Box Styling */
 .search-box {
   display: flex;
   align-items: center;
@@ -165,7 +164,6 @@ body::-webkit-scrollbar {
   gap: 15px;
 }
 
-/* Bottom Info Text */
 .bottom-info {
   font-size: 13px;
   margin: 8px auto;
@@ -173,11 +171,8 @@ body::-webkit-scrollbar {
   font-weight: 300;
 }
 
-/* Result Section */
 .result-container {
   position: relative;
-  height: 100vh;  
-  overflow: hidden;
   height: 70vh;
   padding: 0 1rem;
   margin: 0 auto;
@@ -185,9 +180,8 @@ body::-webkit-scrollbar {
   max-width: 800px;
 }
 
-
 .result-header {
-  display: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
@@ -195,8 +189,8 @@ body::-webkit-scrollbar {
   gap: 10px;
   padding: 15px 20px;
   background-color: white;
-  z-index:100%;
-  width:100%;
+  z-index: 100;
+  width: 100%;
   border-bottom: 1px solid #ccc;
 }
 
@@ -204,20 +198,19 @@ body::-webkit-scrollbar {
   margin-top: 0px;
   overflow-y: auto;
   padding: 20px 0;
-  height:calc(100vh - 70px);
+  height: calc(100vh - 70px);
   scrollbar-width: none;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
-.result-body::-webkit-scrollbar{
-    display: none;
-
+.result-body::-webkit-scrollbar {
+  display: none;
 }
 
 .result-header img {
   width: 40px;
   border-radius: 50%;
 }
-
-/* Loader Animation */
 
 .loader {
   width: 100%;
@@ -244,14 +237,12 @@ body::-webkit-scrollbar {
     background-position: 800px 0px;
   }
 }
+
 .result-data p {
   font-size: 17px;
   font-weight: 300;
   line-height: 1.8;
 }
-
-
-/* Responsive Fixes */
 
 @media (max-width: 600px) {
   .search-box input {
@@ -262,11 +253,11 @@ body::-webkit-scrollbar {
     white-space: nowrap;
     padding: 5px;
   }
-  .greet{
+  .greet {
     margin: 30px 0px;
-   font-size: 32px;
+    font-size: 32px;
   }
-  .cards{
+  .cards {
     gap: 15px;
     padding: 15px;
     bottom: 20px;
@@ -293,10 +284,9 @@ body::-webkit-scrollbar {
   .search-box-fixed {
     left: 0;
     right: 0;
-    max-width: 100%
+    max-width: 100%;
   }
 }
-/*Attach and mic icon */
 
 .search-icons {
   display: flex;
@@ -311,11 +301,11 @@ body::-webkit-scrollbar {
   padding: 5px;
   border-radius: 50%;
   transition: background-color 0.2s ease;
-  color: #585858;;
+  color: #585858;
 }
 .icon-label svg, .icon-button svg {
   width: 18px;
-  height:18px
+  height: 18px;
 }
 
 .icon-label:hover, .icon-button:hover {
@@ -327,16 +317,14 @@ body::-webkit-scrollbar {
   cursor: not-allowed;
 }
 
-
-
 @media (max-width: 600px) {
   .search-box input {
     flex: 10;
     min-width: 100px;
-    width: auto; 
+    width: auto;
     max-width: none;
     overflow-x: auto;
-    white-space: nowrap ;
+    white-space: nowrap;
     padding: 5px;
     box-sizing: border-box;
   }
@@ -376,6 +364,6 @@ body::-webkit-scrollbar {
 
   .icon-label svg, .icon-button svg, .search-box img {
     width: 16px;
-    height: 16px ;
+    height: 16px;
   }
 }
